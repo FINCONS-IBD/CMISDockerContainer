@@ -1,0 +1,1163 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta name="date" content="2014-09-25T15:20:39Z"> 
+  <meta name="pdf:PDFVersion" content="1.5"> 
+  <meta name="xmp:CreatorTool" content="TeX"> 
+  <meta name="access_permission:modify_annotations" content="true"> 
+  <meta name="access_permission:can_print_degraded" content="true"> 
+  <meta name="dcterms:created" content="2014-09-25T15:20:39Z"> 
+  <meta name="Last-Modified" content="2014-09-25T15:20:39Z"> 
+  <meta name="dcterms:modified" content="2014-09-25T15:20:39Z"> 
+  <meta name="dc:format" content="application/pdf; version=1.5"> 
+  <meta name="Last-Save-Date" content="2014-09-25T15:20:39Z"> 
+  <meta name="access_permission:fill_in_form" content="true"> 
+  <meta name="meta:save-date" content="2014-09-25T15:20:39Z"> 
+  <meta name="pdf:encrypted" content="false"> 
+  <meta name="modified" content="2014-09-25T15:20:39Z"> 
+  <meta name="Content-Type" content="application/pdf"> 
+  <meta name="PTEX.Fullbanner" content="This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) kpathsea version 6.1.1"> 
+  <meta name="X-Parsed-By" content="org.apache.tika.parser.DefaultParser"> 
+  <meta name="X-Parsed-By" content="org.apache.tika.parser.pdf.PDFParser"> 
+  <meta name="trapped" content="False"> 
+  <meta name="meta:creation-date" content="2014-09-25T15:20:39Z"> 
+  <meta name="created" content="Thu Sep 25 15:20:39 UTC 2014"> 
+  <meta name="access_permission:extract_for_accessibility" content="true"> 
+  <meta name="access_permission:assemble_document" content="true"> 
+  <meta name="xmpTPg:NPages" content="8"> 
+  <meta name="Creation-Date" content="2014-09-25T15:20:39Z"> 
+  <meta name="access_permission:extract_content" content="true"> 
+  <meta name="access_permission:can_print" content="true"> 
+  <meta name="producer" content="pdfTeX-1.40.14"> 
+  <meta name="access_permission:can_modify" content="true"> 
+  <title></title> 
+  <script>function underlineEntities(){document.getElementById(window.location.hash.substring(1, window.location.hash.length)).style.background="#5CB85C";}</script>
+ </head> 
+ <body onload="underlineEntities()">
+   DIMCloud: a distributed framework for district energy simulation and management 
+  <href id="Francesco_G._Brundu1_115_135">
+   Francesco G. Brundu1
+  </href>, 
+  <href id="Edoardo_Patti1_137_151">
+   Edoardo Patti1
+  </href>, 
+  <href id="Matteo_Del_Giudice2_153_172">
+   Matteo Del Giudice2
+  </href>, 
+  <href id="Anna_Osello2_174_186">
+   Anna Osello2
+  </href>, 
+  <href id="Enrico_Macii1_188_201">
+   Enrico Macii1
+  </href>, and 
+  <href id="Andrea_Aquaviva1_207_223">
+   Andrea Aquaviva1
+  </href> 1 Dept. of Control and Computer Engineering, 2 Dept. of Structural, Construction and Geotechnical Engineering, 
+  <href id="Politecnico_di_Torino_337_358">
+   Politecnico di Torino
+  </href>, Italy. {francesco.brundu,edoardo.pa
+  <href id="tti_395_398">
+   tti
+  </href>,matteo.delgiudice,
+  <href id="anna_417_421">
+   anna
+  </href>.osello,
+  <href id="enrico_429_435">
+   enrico
+  </href>. macii,andrea.acquaviva}@polito.it Abstract. To optimize energy consumption, it is needed to monitor real-time data and 
+  <href id="simulate_558_566">
+   simulate
+  </href> all energy flows. In a city district context, energy consumption data usually come from many sources and encoded in different formats. However, few models have been proposed to trace the energy behavior of city districts and handle related data. In this ar- ticle, we introduce DIMCloud, a model for heterogeneous data manage- ment and integration at district level, in a 
+  <href id="pervasive_computing_939_958">
+   pervasive computing
+  </href> context. Our model, by means of an 
+  <href id="ontology_994_1002">
+   ontology
+  </href>, is able to register the relation- ships between different data sources of the district and to disclose the sources locations using a publish-subscribe design pattern. Furthermore, data sources are published as 
+  <href id="Web_Services_1214_1226">
+   Web Services
+  </href>, abstracting the underlying hardware from the users point-of-view. Key words: 
+  <href id="Smart_City_1306_1316">
+   Smart City
+  </href>, 
+  <href id="middleware_1318_1328">
+   middleware
+  </href>, 
+  <href id="Ubiquitous_Computing_1330_1350">
+   Ubiquitous Computing
+  </href>, Pervasive 
+  <href id="Computing_1362_1371">
+   Computing
+  </href>, 
+  <href id="Internet_of_Things_1373_1391">
+   Internet of Things
+  </href>, District 1 Introduction A single district and urban model is necessary for many purposes, including: i) design or refurbishment of buildings; ii) maintenance and monitoring of energy consumption; iii) data visualization for increasing user awareness. Unfortunately, the design of such model is more difficult than collecting and analyzing data. For example, the different technologies used to collect such data produce 
+  <href id="hetero_1814_1820">
+   hetero
+  </href>- geneous 
+  <href id="information_1830_1841">
+   information
+  </href>, which is difficult to integrate. Moreover, data coming from different platforms are encoded with a specific 
+  <href id="data_format_1951_1962">
+   data format
+  </href>, and therefore not portable. Furthermore, data is usually stored in different locations and accessed using different 
+  <href id="protocols_2080_2089">
+   protocols
+  </href>. A common scenario involves different technologies. For instance, Building In- formation Model Systems (
+  <href id="BIMs_2195_2199">
+   BIMs
+  </href>) [7] build a 
+  <href id="3D_2213_2215">
+   3D
+  </href> parametric model of buildings, enriched with 
+  <href id="semantic_2261_2269">
+   semantic
+  </href> 
+  <href id="information_2270_2281">
+   information
+  </href>, such as measures, materials and costs [11]. On the other hand, 
+  <href id="Geographic_Information_Systems_2346_2376">
+   Geographic Information Systems
+  </href> (GISs) [15] map the geo- graphical location of buildings, energy distribution networks or other elements 2 
+  <href id="Brundu_2488_2494">
+   Brundu
+  </href> et al. (such as 
+  <href id="smart_meters_2512_2524">
+   smart meters
+  </href>). GISs are used for data automation and compilation, management, analysis and modeling of advanced 
+  <href id="cartography_2624_2635">
+   cartography
+  </href> [5]. Finally, it is possible to have System 
+  <href id="Information_Models_2680_2698">
+   Information Models
+  </href> (
+  <href id="SIM_2700_2703">
+   SIM
+  </href>) 
+  <href id="databases_2705_2714">
+   databases
+  </href>, to outline the structure of energy distribution networks with a 
+  <href id="3D_2780_2782">
+   3D
+  </href> parametric model, and 
+  <href id="mea_2805_2808">
+   mea
+  </href>- surements 
+  <href id="databases_2820_2829">
+   databases
+  </href>, to store data collected by sensors. In addition, a district model must satisfy the following constraints: (i) the use of underlying hardware (e.g. sensors) must be transparent from the users point-of-view; (ii) each data source must be able to be registered into the 
+  <href id="sys_3099_3102">
+   sys
+  </href>- tem without needing to restart the whole infrastructure; (iii) the system must communicate by means of shared 
+  <href id="open_protocols_3214_3228">
+   open protocols
+  </href>; (iv) the system must handle the 
+  <href id="data_integration_3262_3278">
+   data integration
+  </href>; (v) the 
+  <href id="data_format_3288_3299">
+   data format
+  </href> must be open and independent from data source. Currently, we believe there is a lack of 
+  <href id="interoperability_3389_3405">
+   interoperability
+  </href>, regarding 
+  <href id="information_3417_3428">
+   information
+  </href> 
+  <href id="exchange_3429_3437">
+   exchange
+  </href>, in district 
+  <href id="information_management_3451_3473">
+   information management
+  </href>. Hereby we propose a distributed infrastructure for district management, which integrates and interconnects dif- ferent models [6] and data sources, and delivers 
+  <href id="information_3636_3647">
+   information
+  </href> by means of 
+  <href id="Web_3660_3663">
+   Web
+  </href> Services. This article is organized as follows: Section 2 presents the state-of-art in the fields of heterogeneous devices integration and 
+  <href id="BIM_3803_3806">
+   BIM
+  </href>/
+  <href id="GIS_3807_3810">
+   GIS
+  </href> integration. Sec- tion 3 introduces the DIMCloud concept, outlining the different aspects of the system. Finally, Section 4 reports conclusions and future directions. The research is funded by EU, 
+  <href id="FP7_SMARTCITIES_4009_4024">
+   FP7 SMARTCITIES
+  </href> 
+  <href id="2013_4025_4029">
+   2013
+  </href> District 
+  <href id="Informa_4039_4046">
+   Informa
+  </href>- tion Modelling and Management for 
+  <href id="Energy_Reduction_4082_4098">
+   Energy Reduction
+  </href> (http://dimmer.polito.it). 2 Background Nowadays, one of the major challenges in 
+  <href id="Ubiquitous_Computing_4182_4202">
+   Ubiquitous Computing
+  </href> and 
+  <href id="Internet_4207_4215">
+   Internet
+  </href> of things concerns the 
+  <href id="interoperability_4239_4255">
+   interoperability
+  </href> between heterogeneous devices. Considering a district context, this problem is even more challenging. However, 
+  <href id="middleware_4367_4377">
+   middleware
+  </href> 
+  <href id="technologies_4378_4390">
+   technologies
+  </href> and 
+  <href id="Services_Oriented_Architectures_(SOA)_4395_4432">
+   Services Oriented Architectures (SOA)
+  </href> [10] can be considered as the key issue to provide low-cost integration for enabling the communication between such heterogeneous devices. In the context of big environments, such as buildings and public spaces, 
+  <href id="middleware_4645_4655">
+   middleware
+  </href> technologies should implement the 
+  <href id="abstraction_4690_4701">
+   abstraction
+  </href> 
+  <href id="software_4702_4710">
+   software
+  </href> layer, which is the key issue to achieve a true 
+  <href id="interoperabil_4759_4772">
+   interoperabil
+  </href>- 
+  <href id="ity_4774_4777">
+   ity
+  </href> between heterogeneous devices. In addition, they should also integrate the already existing and deployed Building Management Systems. The authors of [2] developed a modular open infrastructure, which is a complete 
+  <href id="SOA_4992_4995">
+   SOA
+  </href> ecosystem designed to provide the capabilities of the integrated 
+  <href id="embedded_devices_5061_5077">
+   embedded devices
+  </href>. Finally, 
+  <href id="Stavropoulos_5088_5100">
+   Stavropoulos
+  </href> et al. [14] introduces the aWESoME 
+  <href id="middleware_5136_5146">
+   middleware
+  </href>, which provides uniform access to the heterogeneous 
+  <href id="Wireless_5199_5207">
+   Wireless
+  </href> Sensor and Actuator Networks (WSAN), enabling fast and direct discovery, invocation and execution of ser- vices. Several concepts have been proposed to integrate heterogeneous data and to promote information exchange. For instance, [8] integrated 
+  <href id="BIM_5456_5459">
+   BIM
+  </href> and 
+  <href id="GIS_data_5464_5472">
+   GIS data
+  </href> to provide a 
+  <href id="Supply_Chain_Management_5486_5509">
+   Supply Chain Management
+  </href> framework for Construction. In this case, DIMCloud 3 the 
+  <href id="BIM_5572_5575">
+   BIM
+  </href> model traced cost and materials, while the 
+  <href id="GIS_5619_5622">
+   GIS
+  </href> model minimized the 
+  <href id="logistics_5643_5652">
+   logistics
+  </href> costs. 
+  <href id="Microsoft_Access_5660_5676">
+   Microsoft Access
+  </href> was used for 
+  <href id="information_5690_5701">
+   information
+  </href> exchange. The authors of [4] proposed the 
+  <href id="USIM_5744_5748">
+   USIM
+  </href> concept, an Indoor 
+  <href id="GIS_5768_5771">
+   GIS
+  </href> 
+  <href id="Building_Information_Model_5772_5798">
+   Building Information Model
+  </href> for 
+  <href id="context-aware_5803_5816">
+   context-aware
+  </href> [3] applications. The compatibility was achieved following the 
+  <href id="IFC_5880_5883">
+   IFC
+  </href> standard. In [8] the integration of 
+  <href id="GIS_5920_5923">
+   GIS
+  </href> and 
+  <href id="BIM_5928_5931">
+   BIM
+  </href> models optimized the instal- lation of tower cranes. The 
+  <href id="GIS_5989_5992">
+   GIS
+  </href> model located tower cranes to minimize conflicts between them. On the other hand, the 
+  <href id="BIM_6079_6082">
+   BIM
+  </href> model represented each tower crane area to check the spatial coverage of the system, and was used to estimate the operator point-of-view. The 
+  <href id="BIM_6225_6228">
+   BIM
+  </href> model was exported using a 
+  <href id="database_6256_6264">
+   database
+  </href> (e.g. with 
+  <href id="Microsoft_Access_6276_6292">
+   Microsoft Access
+  </href>). In [9] the authors used Schema-Level Model Views, i.e. partial sub-models taken from the 
+  <href id="BIM_6384_6387">
+   BIM
+  </href> (
+  <href id="IFC_6389_6392">
+   IFC
+  </href>) model and translated to the geo-spatial context into a 
+  <href id="ESRI_6449_6453">
+   ESRI
+  </href> 
+  <href id="Geodatabase_6454_6465">
+   Geodatabase
+  </href> (geo-spatial1 
+  <href id="database_6480_6488">
+   database
+  </href>) or a ESRI Shapefile (a file format used to represent the geo-relational model2). On the other hand, from the district energy consumption point-of-view, [16] introduced the 
+  <href id="CDIM_6663_6667">
+   CDIM
+  </href> (City District 
+  <href id="Information_model_6683_6700">
+   Information model
+  </href>) concept, which aim at integrating and managing data, to support the conception and the simulation of district energy consumption. 
+  <href id="CDIM_6832_6836">
+   CDIM
+  </href> integrates data by means of object-relational 
+  <href id="databases_6883_6892">
+   databases
+  </href>. In our work, we propose a framework for simulation and visualization of energy consumption in a district context, by means of 
+  <href id="middleware_7021_7031">
+   middleware
+  </href> and 
+  <href id="SOA_7036_7039">
+   SOA
+  </href> concepts. To achieve it, the framework enriches 
+  <href id="BIM_7088_7091">
+   BIM
+  </href> and 
+  <href id="SIM_7096_7099">
+   SIM
+  </href> with real-time data collected by devices deployed in buildings and energy distribution 
+  <href id="networks_7187_7195">
+   networks
+  </href>. 3 Distributed Framework for District Energy Simulation and Management In a 
+  <href id="Smart_Cities_7274_7286">
+   Smart Cities
+  </href> context, we designed our concept DIMCloud (District 
+  <href id="Informa_7339_7346">
+   Informa
+  </href>- tion Model 
+  <href id="Cloud_7359_7364">
+   Cloud
+  </href>) to ease the visualization and simulation of energy consump- 
+  <href id="tion_7426_7430">
+   tion
+  </href> in a city district. DIMCloud (depicted in Figure 1(a)) links the district energy consumption data with 
+  <href id="semantic_7534_7542">
+   semantic
+  </href> and 
+  <href id="geographic_information_7547_7569">
+   geographic information
+  </href>, such as the building in which the data has been collected. In this way, it is possible to monitor in real-time the district as a whole or with a more fine-grained 
+  <href id="perspec_7734_7741">
+   perspec
+  </href>- 
+  <href id="tive_7743_7747">
+   tive
+  </href>, e.g. each single house, abstracting the pervasive distributed infrastructure of sensors. DIMCloud abstracts data sources by means of a set of specific prox- ies, contained in the data layer. Each 
+  <href id="proxy_7945_7950">
+   proxy
+  </href> responds to data requests retrieving the correspondent data, adapting them to a district context (for instance, label- 
+  <href id="ing_8070_8073">
+   ing
+  </href> them as belonging to a specific building) and converting them to a shared unique format. There are two types of 
+  <href id="proxy_8186_8191">
+   proxy
+  </href>: Device-proxy, if data comes from a device (see Section 3.1), 
+  <href id="Database-proxy_8254_8268">
+   Database-proxy
+  </href>, if data comes from a 
+  <href id="database_8291_8299">
+   database
+  </href> (see Section 3.2). The requests enter the integration layer and are dispatched to the 1 http://support.esri.com/en/knowledgebase/GISDictionary/term/geospatial+ 
+  <href id="technology_8462_8472">
+   technology
+  </href> 2 http://support.esri.com/en/knowledgebase/GISDictionary/term/ georelational+data+model 4 
+  <href id="Brundu_8568_8574">
+   Brundu
+  </href> et al. correct 
+  <href id="proxy_8591_8596">
+   proxy
+  </href> by the clouds master node, as shown in Figure 1(a). The ref- erences between different 
+  <href id="databases_8684_8693">
+   databases
+  </href> are modeled by means of an 
+  <href id="ontology_8721_8729">
+   ontology
+  </href> and are exploited by the master node during the integration of different data (for instance, to integrate the data of a building with its geographical location and sensors measurements). (a) DIM 
+  <href id="Cloud_8926_8931">
+   Cloud
+  </href> 
+  <href id="schema_8932_8938">
+   schema
+  </href> (b) Device-Proxy 
+  <href id="schema_8956_8962">
+   schema
+  </href> Fig. 1. Framework for energy simulation and management in the district. DIMCloud exploits the SEEMPubS service-oriented 
+  <href id="middleware_9085_9095">
+   middleware
+  </href> [12]. It pro- 
+  <href id="vides_9110_9115">
+   vides
+  </href> components, called managers, to develop 
+  <href id="distributed_software_9156_9176">
+   distributed software
+  </href> based on both 
+  <href id="user-centric_9191_9203">
+   user-centric
+  </href> and event-based approaches. 
+  <href id="SEEMPubS_9232_9240">
+   SEEMPubS
+  </href>, thanks to the Net- work Manager, is in charge to establish a 
+  <href id="peer-to-peer_communication_9303_9329">
+   peer-to-peer communication
+  </href> across the different entities in the 
+  <href id="middleware_9367_9377">
+   middleware
+  </href> 
+  <href id="network_9378_9385">
+   network
+  </href>. The SEEMPubS event-based approach is given by the 
+  <href id="Event_Manager_9437_9450">
+   Event Manager
+  </href>, which implements a 
+  <href id="publish/subscribe_9471_9488">
+   publish/subscribe
+  </href> model. Hence, the 
+  <href id="middleware_9507_9517">
+   middleware
+  </href> allows the development of loosely-coupled event- based systems removing all the explicit dependencies between the 
+  <href id="interacting_9632_9643">
+   interacting
+  </href> entities. Finally, the concept of SEEMPubS 
+  <href id="Proxy_9687_9692">
+   Proxy
+  </href> [13] has been extended to enable the 
+  <href id="interoperability_9730_9746">
+   interoperability
+  </href> between heterogeneous devices and also to integrate the different 
+  <href id="databases_9813_9822">
+   databases
+  </href>, as described respectively in Section 3.1 and 3.2. It ab- stracts and eases the integration of a specific technology, device or service into a SEEMPubS 
+  <href id="application_9975_9986">
+   application
+  </href> providing 
+  <href id="Web_Services_9997_10009">
+   Web Services
+  </href> and registering it at a 
+  <href id="Network_10034_10041">
+   Network
+  </href> Manager. 3.1 Enabling 
+  <href id="Interoperability_10065_10081">
+   Interoperability
+  </href> Across Heterogeneous Devices Figure 1(b) summarizes the 
+  <href id="schema_10139_10145">
+   schema
+  </href> designed to implement the 
+  <href id="Proxy_10172_10177">
+   Proxy
+  </href>, which inte- grates heterogeneous devices into the DIMCloud and enables the 
+  <href id="interoperability_10254_10270">
+   interoperability
+  </href> between them. The Device-Proxy is a service layer for abstracting the underly- 
+  <href id="ing_10350_10353">
+   ing
+  </href> heterogeneous 
+  <href id="wireless_10368_10376">
+   wireless
+  </href> and wired technologies. Different Device-Proxies, one for each considered technology, were developed to provide the following main features: DIMCloud 5 enabling the integration of heterogeneous devices and 
+  <href id="interfacing_10589_10600">
+   interfacing
+  </href> them to the whole proposed infrastructure by means of 
+  <href id="Web_Services_10655_10667">
+   Web Services
+  </href>, through which access sensor data; collecting environmental data coming from 
+  <href id="sensor_nodes_10747_10759">
+   sensor nodes
+  </href> into a local 
+  <href id="database_10773_10781">
+   database
+  </href>, which can be accessed in an asynchronous way and protected against 
+  <href id="network_10850_10857">
+   network
+  </href> failures; pushing environmental 
+  <href id="information_10892_10903">
+   information
+  </href> into the infrastructure via an event-based approach, thanks to the Event Manager; allowing the 
+  <href id="remote_control_11001_11015">
+   remote control
+  </href> of actuator devices. Therefore, the Device-Proxy, as shown in Figure 1(b), is a 
+  <href id="software_11097_11105">
+   software
+  </href> which communicates directly with the 
+  <href id="heterogeneous_networks_11143_11165">
+   heterogeneous networks
+  </href> and consists of three layers. The dedicated 
+  <href id="Interface_11210_11219">
+   Interface
+  </href>, the lowest layer, directly receives all the incom- 
+  <href id="ing_11272_11275">
+   ing
+  </href> data from the devices, regardless of 
+  <href id="communication_protocols_11313_11336">
+   communication protocols
+  </href>, hardware or 
+  <href id="network_topology_11350_11366">
+   network topology
+  </href>. Each technology needs a specific 
+  <href id="software_Interface_11401_11419">
+   software Interface
+  </href>, which in- terprets environmental data (e.g. Temperature, Humidity, Power Consumption, etc.) and stores them in an integrated 
+  <href id="database_11546_11554">
+   database
+  </href>, which is in the second layer. Since data are stored locally, the 
+  <href id="database_11621_11629">
+   database
+  </href> makes the whole infrastructure flexible and reliable with respect to backbone network failures. Finally, the 
+  <href id="SEEMPubS_11739_11747">
+   SEEMPubS
+  </href> 
+  <href id="Web_Services_11748_11760">
+   Web Services
+  </href> layer 
+  <href id="interfaces_11767_11777">
+   interfaces
+  </href> the different technologies to other components of the infrastructure, easing remote management and control, and enabling the in- 
+  <href id="teroperability_11907_11921">
+   teroperability
+  </href> between heterogeneous devices. From this layer, trough the Event Manager, real-time data collected by sensors are sent to other 
+  <href id="applications_12050_12062">
+   applications
+  </href>, such as the Measurements 
+  <href id="Database_12089_12097">
+   Database
+  </href>, which collects data coming from the districts devices. In particular, we developed 
+  <href id="proxies_12183_12190">
+   proxies
+  </href> for 
+  <href id="IEEE_802.15.4_12195_12208">
+   IEEE 802.15.4
+  </href>, 
+  <href id="ZigBee_12210_12216">
+   ZigBee
+  </href> and 
+  <href id="EnOcean_12221_12228">
+   EnOcean
+  </href> 
+  <href id="protocols_12229_12238">
+   protocols
+  </href>, which are wireless technologies. Moreover, about wired technologies, it was developed a specific 
+  <href id="proxy_12337_12342">
+   proxy
+  </href> to allow the 
+  <href id="interoperability_12356_12372">
+   interoperability
+  </href> with the 
+  <href id="OPC_12382_12385">
+   OPC
+  </href> Unified Architecture3, which incorporates all the features provided by different standards, such as 
+  <href id="SCADA_12486_12491">
+   SCADA
+  </href> or 
+  <href id="BACnet_12495_12501">
+   BACnet
+  </href>. 3.2 Abstracting Underlying Data Sources Different 
+  <href id="databases_12555_12564">
+   databases
+  </href> store district data. Unfortunately, the integration to a unique 
+  <href id="database_12629_12637">
+   database
+  </href> is not feasible, because of heterogeneity (different formats) and con- flicting values (the same key can be used to identify different objects in different 
+  <href id="databases_12794_12803">
+   databases
+  </href>). Furthermore, the update of such 
+  <href id="database_12838_12846">
+   database
+  </href> would be laborious. In our distributed infrastructure, each 
+  <href id="database_12908_12916">
+   database
+  </href> is accompanied with an in- terface (
+  <href id="Database-proxy_12953_12967">
+   Database-proxy
+  </href>), which provides data 
+  <href id="retrieval_12990_12999">
+   retrieval
+  </href> from the 
+  <href id="database_13009_13017">
+   database
+  </href> pub- 
+  <href id="lishing_13023_13030">
+   lishing
+  </href> a 
+  <href id="Web_Service_13033_13044">
+   Web Service
+  </href>. Simultaneously, a master node of the infrastructure stores the relationships between the available 
+  <href id="proxies_13145_13152">
+   proxies
+  </href> into an 
+  <href id="ontology_13161_13169">
+   ontology
+  </href>. In this way, the user 
+  <href id="queries_13193_13200">
+   queries
+  </href> a single entry point (the master node) to receive 
+  <href id="proxies_13251_13258">
+   proxies
+  </href> URIs. Af- terwards, s/he receives the 
+  <href id="Web_Service_13297_13308">
+   Web Service
+  </href> URIs of the 
+  <href id="proxies_13321_13328">
+   proxies
+  </href> and the relationships between them. Finally, s/he retrieves the data using the 
+  <href id="proxies_13408_13415">
+   proxies
+  </href> 
+  <href id="Web_Services_13416_13428">
+   Web Services
+  </href> and is able to integrate them. 3 https://www.opcfoundation.org/UA/ 6 
+  <href id="Brundu_13503_13509">
+   Brundu
+  </href> et al. 3.3 
+  <href id="Information_13522_13533">
+   Information
+  </href> Modeling and Data Export To export the models behind the Database-proxies in the DIMCloud, it was necessary to use 
+  <href id="Autodesk_Revit_13650_13664">
+   Autodesk Revit
+  </href> and 
+  <href id="ESRI_13669_13673">
+   ESRI
+  </href> 
+  <href id="ArcGIS_13674_13680">
+   ArcGIS
+  </href> 10. The Level of Development and the 
+  <href id="Level_of_Detail_13718_13733">
+   Level of Detail
+  </href> were carefully chosen before the modeling step, referring to 
+  <href id="the_American_Institute_of_Architects_13795_13831">
+   the American Institute of Architects
+  </href> (
+  <href id="A.I.A._13833_13839">
+   A.I.A.
+  </href>)4. In 
+  <href id="Revit_13846_13851">
+   Revit
+  </href> we developed the model of the building with Local Masses. Afterwards, we enriched the 
+  <href id="BIM_13938_13941">
+   BIM
+  </href> model with 
+  <href id="semantic_13953_13961">
+   semantic
+  </href> 
+  <href id="information_13962_13973">
+   information
+  </href>. The building and the context models were oriented and located appropriately. In addition, more informations could be inserted using Shared 
+  <href id="parameters_14114_14124">
+   parameters
+  </href>. Working on 
+  <href id="ArcGIS_14137_14143">
+   ArcGIS
+  </href>, we defined the geographic coordinates system and we made 
+  <href id="shapefiles_14202_14212">
+   shapefiles
+  </href> (.shp) of buildings and of addresses. 
+  <href id="Shapefiles_14251_14261">
+   Shapefiles
+  </href> are used to store non-topological geometries and attribute informations [1], such as construction typology or data, and were developed to describe the 
+  <href id="GIS_14413_14416">
+   GIS
+  </href> model. Parametric models need an export / import process, to share data between different applications. Therefore, several formats have to be tested to avoid errors and data losses. For instance, IFC5 and CityGML6 are two predominant standard 
+  <href id="exchange_14661_14669">
+   exchange
+  </href> formats in the 
+  <href id="building_industry_14685_14702">
+   building industry
+  </href>. We decided to export 
+  <href id="BIM_14725_14728">
+   BIM
+  </href> and 
+  <href id="GIS_14733_14736">
+   GIS
+  </href> models by means of 
+  <href id="relational_databases_14756_14776">
+   relational databases
+  </href>. 3.4 Exploiting 
+  <href id="Ontologies_14794_14804">
+   Ontologies
+  </href> to Relate District Entities When the master node search for the 
+  <href id="Web_Services_14870_14882">
+   Web Services
+  </href> 
+  <href id="URI_14883_14886">
+   URI
+  </href> of data source, it refers to an 
+  <href id="ontology_14919_14927">
+   ontology
+  </href>. The 
+  <href id="ontology_14933_14941">
+   ontology
+  </href> stores a model for the whole district. This model is a 
+  <href id="tree_14997_15001">
+   tree
+  </href>, in which the root node identifies the district and its global properties (e.g. 
+  <href id="Web_Services_15082_15094">
+   Web Services
+  </href> for 
+  <href id="GIS_Database-Proxy_URI_15099_15121">
+   GIS Database-Proxy URI
+  </href>), and defines the relationships between different data sources. In the 
+  <href id="ontology_15193_15201">
+   ontology
+  </href> each node connected to the root node describes a building or an energy distribution 
+  <href id="network_15286_15293">
+   network
+  </href>, and it is labeled with a unique id. Each node stores: the 
+  <href id="Web_Services_15355_15367">
+   Web Services
+  </href> URIs for both 
+  <href id="BIM_15382_15385">
+   BIM
+  </href> or 
+  <href id="SIM_Database-Proxy_15389_15407">
+   SIM Database-Proxy
+  </href>; the ID of the 
+  <href id="BIM_15424_15427">
+   BIM
+  </href> or 
+  <href id="SIM_15431_15434">
+   SIM
+  </href> in the 
+  <href id="GIS_15442_15445">
+   GIS
+  </href> Database-Proxy; a dictionary containing, for each sensor, its ID in the measurements 
+  <href id="database_15532_15540">
+   database
+  </href>. Figure 2 depicts the ontologys 
+  <href id="schema_15574_15580">
+   schema
+  </href>. From the root node, it is possible to reach every data source in the district. Each found leaf node discloses the necessary references to query the related data sources. 3.5 Use Case: District Data 
+  <href id="Query_15781_15786">
+   Query
+  </href> Figure 3 depicts the sequence diagram to retrieve the data related to a district, which can include real-time measurements, 
+  <href id="BIM_15912_15915">
+   BIM
+  </href> and 
+  <href id="SIM_15920_15923">
+   SIM
+  </href> models for N selected buildings and energy distribution 
+  <href id="networks_15980_15988">
+   networks
+  </href> respectively. The Client, for instance an application for simulation or data visualization, asks the Master (step 1) for 4 http://www.aia.org/groups/aia/documents/pdf/aiab095711.pdf 5 http://www.buildingsmart.org/standards/ifc 6 http://www.citygml.org DIMCloud 7 Fig. 2. 
+  <href id="Ontology_16266_16274">
+   Ontology
+  </href> 
+  <href id="schema_16275_16281">
+   schema
+  </href> data and 
+  <href id="Web_Services_16292_16304">
+   Web Services
+  </href> URIs (
+  <href id="proxies_16311_16318">
+   proxies
+  </href>). The Master checks the 
+  <href id="ontology_16343_16351">
+   ontology
+  </href> and returns (2) all the information for the requested 
+  <href id="GIS_16406_16409">
+   GIS
+  </href>, 
+  <href id="BIM_16411_16414">
+   BIM
+  </href>, 
+  <href id="SIM_16416_16419">
+   SIM
+  </href> and their rela- tive measurements. In (3) the Client asks for geographical data for the required 
+  <href id="BIM_16517_16520">
+   BIM
+  </href> and 
+  <href id="SIM_IDs_16525_16532">
+   SIM IDs
+  </href> to the 
+  <href id="GIS_16540_16543">
+   GIS
+  </href> 
+  <href id="proxy_16544_16549">
+   proxy
+  </href>, which responds in (4). Afterwards, the Client retrieves measurements data from the Measurements 
+  <href id="Proxy_16647_16652">
+   Proxy
+  </href> (5, 6). Fi- nally, in (7) and (8), in (9) and (10) and, generically, in (BRn) and (BSn) and in (SRn) and (SSn), the Client retrieves the data from the N 
+  <href id="BIM_16806_16809">
+   BIM
+  </href> and 
+  <href id="SIM_16814_16817">
+   SIM
+  </href> models invoking the 
+  <href id="Web_Services_16838_16850">
+   Web Services
+  </href> for the related 
+  <href id="proxies_16867_16874">
+   proxies
+  </href>. Fig. 3. District data 
+  <href id="query_16899_16904">
+   query
+  </href> sequence diagram 4 Conclusions The CDIM approach [16] showed that a district-based simulation can be bene- ficial to optimize energy consumption, with respect to 
+  <href id="BIM_17069_17072">
+   BIM
+  </href> simulations. In our work, we introduced a different model for the district, i.e. DIMCloud, in which each data source is reachable by means of a 
+  <href id="Web_Service_17217_17228">
+   Web Service
+  </href> 
+  <href id="proxy_17229_17234">
+   proxy
+  </href>. The underly- 8 
+  <href id="Brundu_17255_17261">
+   Brundu
+  </href> et al. 
+  <href id="ing_17270_17273">
+   ing
+  </href> hardware is available as a service, and the user can query in the same way heterogeneous sources, to monitor real-time energy consumption in the district. We think that the proposed system can be of crucial importance to manage 
+  <href id="district_energy_17503_17518">
+   district energy
+  </href> data, in order to develop energy consumption awareness and sustainability in smart district scenarios. References 1. Esri shapefile tecnical description. 
+  <href id="ESRI_17675_17679">
+   ESRI
+  </href> White paper, 
+  <href id="1998_17693_17697">
+   1998
+  </href>. 2. 
+  <href id="G._Candido_17702_17712">
+   G. Candido
+  </href>, 
+  <href id="A.W._Colombo_17714_17726">
+   A.W. Colombo
+  </href>, 
+  <href id="J._Barata_17728_17737">
+   J. Barata
+  </href>, and 
+  <href id="F._Jammes_17743_17752">
+   F. Jammes
+  </href>. Service-oriented infrastruc- 
+  <href id="ture_17784_17788">
+   ture
+  </href> to support the deployment of evolvable production systems. In 
+  <href id="IEEE_17851_17855">
+   IEEE
+  </href> Trans. on Industrial Informatics, volume 7, 
+  <href id="Nov._2009_17900_17909">
+   Nov. 2009
+  </href>. 3. 
+  <href id="G._Chen_17915_17922">
+   G. Chen
+  </href> and 
+  <href id="D._Kotz_17927_17934">
+   D. Kotz
+  </href>. A survey of context-aware mobile computing research. 
+  <href id="Tech_17989_17993">
+   Tech
+  </href>- nical Report TR2000-381, pages 116, 
+  <href id="2000_18031_18035">
+   2000
+  </href>. 4. 
+  <href id="J.W._Choi_18041_18050">
+   J.W. Choi
+  </href>, 
+  <href id="S.A._Kim_18052_18060">
+   S.A. Kim
+  </href>, 
+  <href id="J._Lertlakkhanakul_18062_18080">
+   J. Lertlakkhanakul
+  </href>, and 
+  <href id="J.H._Yeom_18086_18095">
+   J.H. Yeom
+  </href>. Developing ubiquitous 
+  <href id="space_18119_18124">
+   space
+  </href> information model for indoor 
+  <href id="gis_18154_18157">
+   gis
+  </href> service in 
+  <href id="ubicomp_18169_18176">
+   ubicomp
+  </href> environment. In 
+  <href id="Proc_18193_18197">
+   Proc
+  </href>. of 4th 
+  <href id="IEEE_18206_18210">
+   IEEE
+  </href> NCM08, pages 381388, 
+  <href id="2008_18232_18236">
+   2008
+  </href>. 5. 
+  <href id="A._C._de_Pina_Filho_18242_18261">
+   A. C. de Pina Filho
+  </href>, 
+  <href id="F._R._Lima_18263_18273">
+   F. R. Lima
+  </href>, and 
+  <href id="R_Dias_Calado_18279_18292">
+   R Dias Calado
+  </href> do 
+  <href id="Amaral_18296_18302">
+   Amaral
+  </href>. Computational Tools applied to Urban Engineering, Methods and 
+  <href id="Techniques_18366_18376">
+   Techniques
+  </href> in Urban Engineering. 6. 
+  <href id="M._Del_Giudice_18403_18417">
+   M. Del Giudice
+  </href>, 
+  <href id="A._Osello_18419_18428">
+   A. Osello
+  </href>, and 
+  <href id="E._Patti_18434_18442">
+   E. Patti
+  </href>. 
+  <href id="Bim_18444_18447">
+   Bim
+  </href> and 
+  <href id="gis_18452_18455">
+   gis
+  </href> for district modeling. In 
+  <href id="ECPPM_18482_18487">
+   ECPPM
+  </href> 2014 Conference, Vienna, 
+  <href id="2014_18513_18517">
+   2014
+  </href>. 7. 
+  <href id="C._Eastman_18523_18533">
+   C. Eastman
+  </href>, 
+  <href id="P._Teicholz_18535_18546">
+   P. Teicholz
+  </href>, 
+  <href id="R._Sacks_18548_18556">
+   R. Sacks
+  </href>, and 
+  <href id="K._Liston_18562_18571">
+   K. Liston
+  </href>. 
+  <href id="Bim_18573_18576">
+   Bim
+  </href> handbook: A guide to 
+  <href id="building_information_modeling_18598_18627">
+   building information modeling
+  </href> for owners, managers, designers, engineers, and con- tractors. 
+  <href id="John_Wiley_and_Sons_18691_18710">
+   John Wiley and Sons
+  </href>, 
+  <href id="Inc._18712_18716">
+   Inc.
+  </href>, 
+  <href id="2008_18718_18722">
+   2008
+  </href>. 8. 
+  <href id="J._Irizarry_18728_18739">
+   J. Irizarry
+  </href>, 
+  <href id="E.P._Karan_18741_18751">
+   E.P. Karan
+  </href>, and 
+  <href id="F._Jalaei_18757_18766">
+   F. Jalaei
+  </href>. Integrating 
+  <href id="BIM_18780_18783">
+   BIM
+  </href> and 
+  <href id="GIS_18788_18791">
+   GIS
+  </href> to improve the visual monitoring of construction 
+  <href id="supply_chain_management_18841_18864">
+   supply chain management
+  </href>. Automation in Construction, 31:241254, 
+  <href id="2013_18905_18909">
+   2013
+  </href>. 9. U. Isikdag, 
+  <href id="J._Underwood_18927_18939">
+   J. Underwood
+  </href>, and 
+  <href id="G._Aouad_18945_18953">
+   G. Aouad
+  </href>. An investigation into the applicability of 
+  <href id="building_information_models_18998_19025">
+   building information models
+  </href> in geospatial environment in support of site 
+  <href id="selec_19071_19076">
+   selec
+  </href>- 
+  <href id="tion_19078_19082">
+   tion
+  </href> and fire response management processes. 
+  <href id="Advanced_19123_19131">
+   Advanced
+  </href> Engineering Informatics, 22(4):504519, 
+  <href id="2008_19171_19175">
+   2008
+  </href>. 10. 
+  <href id="S._Karnouskos_19182_19195">
+   S. Karnouskos
+  </href>. The cooperative 
+  <href id="internet_of_things_19213_19231">
+   internet of things
+  </href> enabled smart grid. In 
+  <href id="Proc_19255_19259">
+   Proc
+  </href>. of the 14th 
+  <href id="IEEE_ISCE_19273_19282">
+   IEEE ISCE
+  </href>, Braunschweig, Germany, 
+  <href id="June_2010_19307_19316">
+   June 2010
+  </href>. 11. 
+  <href id="A._Osello_19323_19332">
+   A. Osello
+  </href>. The future of Drawing with 
+  <href id="BIM_19361_19364">
+   BIM
+  </href> for Engineers and Architects. 
+  <href id="Dario_19395_19400">
+   Dario
+  </href> 
+  <href id="Flaccovio_Editore_19401_19418">
+   Flaccovio Editore
+  </href>, Palermo, 
+  <href id="2012_19429_19433">
+   2012
+  </href>. 12. 
+  <href id="E._Patti_19440_19448">
+   E. Patti
+  </href>, 
+  <href id="A._Acquaviva_19450_19462">
+   A. Acquaviva
+  </href>, 
+  <href id="M._Jahn_19464_19471">
+   M. Jahn
+  </href>, 
+  <href id="F._Pramudianto_19473_19487">
+   F. Pramudianto
+  </href>, 
+  <href id="R._Tomasi_19489_19498">
+   R. Tomasi
+  </href>, 
+  <href id="D._Rabourdin_19500_19512">
+   D. Rabourdin
+  </href>, 
+  <href id="J._Vir_19514_19520">
+   J. Vir
+  </href>- gone, and 
+  <href id="E._Macii_19532_19540">
+   E. Macii
+  </href>. Event-driven user-centric 
+  <href id="middleware_19568_19578">
+   middleware
+  </href> for energy-efficient build- ings and public spaces. Systems Journal, 
+  <href id="IEEE_19648_19652">
+   IEEE
+  </href>, 
+  <href id="2014_19654_19658">
+   2014
+  </href>. 13. 
+  <href id="E._Patti_19665_19673">
+   E. Patti
+  </href>, 
+  <href id="A._Acquaviva_19675_19687">
+   A. Acquaviva
+  </href>, and 
+  <href id="E._Macii_19693_19701">
+   E. Macii
+  </href>. Enable sensor networks 
+  <href id="interoperability_19726_19742">
+   interoperability
+  </href> in smart public spaces through a service oriented approach. In 
+  <href id="Proc_19806_19810">
+   Proc
+  </href>. of 5th 
+  <href id="IEEE_19819_19823">
+   IEEE
+  </href> 
+  <href id="IWASI_19824_19829">
+   IWASI
+  </href>, pages 27, 
+  <href id="June_2013_19841_19850">
+   June 2013
+  </href>. 14. 
+  <href id="T._G._Stavropoulos_19857_19875">
+   T. G. Stavropoulos
+  </href>, 
+  <href id="K._Gottis_19877_19886">
+   K. Gottis
+  </href>, 
+  <href id="Vrakas_D._19888_19897">
+   Vrakas D.
+  </href>, and I. Vlahavas. awesome: A 
+  <href id="web_19927_19930">
+   web
+  </href> 
+  <href id="service_19931_19938">
+   service
+  </href> 
+  <href id="middleware_19939_19949">
+   middleware
+  </href> for ambient intelligence. Expert Systems with 
+  <href id="Applications_19996_20008">
+   Applications
+  </href>, 40(11):43804392, 
+  <href id="Sept._2013_20027_20037">
+   Sept. 2013
+  </href>. 15. 
+  <href id="R._F._Tomlinson_20044_20059">
+   R. F. Tomlinson
+  </href>. A 
+  <href id="geographic_information_system_20063_20092">
+   geographic information system
+  </href> for regional planning. Journal of Geography (
+  <href id="Chigaku_Zasshi_20138_20152">
+   Chigaku Zasshi
+  </href>), 78(1):4548, 
+  <href id="1969_20167_20171">
+   1969
+  </href>. 16. 
+  <href id="H._Wolisz_20178_20187">
+   H. Wolisz
+  </href>, 
+  <href id="L._Bo??se_20189_20197">
+   L. Bo??s
+  </href>e,
+  <href id="H._Harb_20199_20206">
+    H. Har
+  </href>b,
+  <href id="R._Streblow_20208_20219">
+    R. Streblo
+  </href>w, and
+  <href id="D._Mu??ller_20225_20235">
+    D. Mu??ll
+  </href>er
+  <href id="City_20237_20241">
+   . Ci
+  </href>ty district information modeling as a foundation for simulation and evaluation o
+  <href id="smart_city_20321_20331">
+   f smart ci
+  </href>ty approaches. I
+  <href id="Proc_20347_20351">
+   n Pr
+  </href>oc. of Building Simulation and Optimization Conference, London
+  <href id="2014_20413_20417">
+   , 20
+  </href>14
+  <href id="UCL_20419_20422">
+   . U
+  </href>CL. 
+ </body>
+</html>
